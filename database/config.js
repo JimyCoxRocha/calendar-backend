@@ -11,6 +11,7 @@ const dbConnection = async() => {
                 useCreateIndex: true
             }
         );
+        console.log("DB Execute");
     }catch (error){
         throw new Error("Error al momento de inicializar base de datos");
     }

@@ -26,7 +26,7 @@ app.use( "/api/auth", require("./routes/auth") );
 //TODO: CRUD: Eventos
 app.use( "/api/events", require("./routes/events") );
 
-//Escuchar peticiones
+//Escuchar peticiones. Si Heroku no me proporciona la variable PORT, utilizaré la del .env
 app.listen( process.env.PORT, ()=>{
-    // console.log(`Servidor corriendo en puerto: ${ process.env.PORT }`);
+    console.log(`Servidor corriendo en puerto: ${ process.env.PORT }`+ " - The back-end Node JS");
 } );//colocar el puerto, 3000 no colocal porque ahí esta react
