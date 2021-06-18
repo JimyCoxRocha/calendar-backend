@@ -2,13 +2,14 @@ const { response } = require( "express" );
 const Evento = require("../models/Evento");
 
 const getEventos = async( req, res = response,  ) => {
-    const eventos = await Evento.find()
-                    .populate("user", "name");//Para llenar referencias Schema. Indico que solo quiero "name"
+
+    const eventos = await Evento.find({ "user": req.uid })
+                                    .populate("user", "name");//Para llenar referencias Schema. Indico que solo quiero "name"
                     //NOTA: Los valors que se deben poner allí, son los del Schmea "Usuario"
 
     return res.status(200).json({
         ok: true,
-        msg: eventos
+        msg: eventos, 
     });
 }
 
@@ -29,11 +30,6 @@ const crearEvento = async( req, res = response,  ) => {
         });
     }
     
-
-    return res.status(200).json({
-        ok: true,
-        msg: "getEventos"
-    });
 }
 
 const actualizarEvento = async( req, res = response,  ) => {
